@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import Image from "next/image";
 import PhoneField from "./PhoneField";
-import { LEVELS, SKILLS, TEAM_MAX_SIZE } from "@/lib/config";
+import { LEVELS, REGISTRATION_OPEN, SKILLS, TEAM_MAX_SIZE } from "@/lib/config";
 
 type Mode = "team" | "solo" | null;
 type TeamAction = "create" | "join" | null;
@@ -116,7 +116,12 @@ export default function RegisterForm() {
             <p className="brand-subtitle">Inscription des participants</p>
           </div>
         </div>
-        {!result ? (
+        {!REGISTRATION_OPEN ? (
+          <div role="status">
+            <h1>Inscriptions clôturées</h1>
+            <p className="intro">Les inscriptions sont terminées. Merci à toutes et à tous pour votre participation et votre intérêt pour le Hackathon ABIFA 2026.</p>
+          </div>
+        ) : !result ? (
           <>
             <h1>Inscription</h1>
             <p className="intro">Inscris-toi avec ton équipe ou demande à en rejoindre une.</p>

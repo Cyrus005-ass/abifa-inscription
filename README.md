@@ -27,6 +27,7 @@ Les inscriptions sont stockées dans Supabase et consultables dans l'espace orga
 ## Réglages (src/lib/config.ts)
 
 - `ORGANIZER_WHATSAPP` : numéro de l'organisation, format international sans `+` (actuellement `2290199871252`).
+- `REGISTRATION_OPEN` : indique si les inscriptions sont ouvertes (`false` par défaut après leur clôture).
 - `TEAM_MAX_SIZE` : 6 membres maximum par équipe (chef compris). `TEAM_MIN_SIZE` : 2.
 
 ## Fonctionnement

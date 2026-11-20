@@ -3,7 +3,7 @@ import { db } from "@/lib/supabase";
 import { registerSchema } from "@/lib/schemas";
 import { normalizePhone } from "@/lib/phone";
 import { rateLimit } from "@/lib/ratelimit";
-import { TEAM_MAX_SIZE } from "@/lib/config";
+import { REGISTRATION_OPEN, TEAM_MAX_SIZE } from "@/lib/config";
 
 export const runtime = "nodejs";
 
@@ -20,6 +20,10 @@ function normalizeCode(raw: string) {
 const fail = (error: string, status = 400) => NextResponse.json({ ok: false, error }, { status });
 
 export async function POST(req: Request) {
+  if (!REGISTRATION_OPEN) {
+    return fail("Les inscriptions sont terminées. Merci à toutes et à tous pour votre participation et votre intérêt.", 403);
+  }
+
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (!rateLimit(ip)) return fail("Trop de tentatives. Réessaie dans quelques minutes.", 429);
 

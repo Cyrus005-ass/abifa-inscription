@@ -2,6 +2,8 @@
 // 0199871252 au Bénin => 229 + 0199871252
 export const ORGANIZER_WHATSAPP = "2290199871252";
 
+export const REGISTRATION_OPEN = false;
+
 // Nombre maximum de membres par équipe (chef compris).
 export const TEAM_MAX_SIZE = 6;
 export const TEAM_MIN_SIZE = 2;
